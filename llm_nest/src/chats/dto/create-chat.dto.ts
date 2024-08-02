@@ -7,15 +7,26 @@ export enum Models {
 }
 
 export class CreateChatDto {
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({
+    description:
+      'It is optional, if not provided, it will create a new conversation',
+    example: '66ac7cc02b2de3908383389a',
+  })
   @IsMongoId()
   @IsOptional()
   conversation_id?: string;
-  @ApiProperty()
+  @ApiProperty({
+    description: 'The query to search for the conversation',
+    example: 'What is meaning of life?',
+  })
   @IsString()
   @IsOptional()
   query: string;
-  @ApiProperty({ enum: Models })
+  @ApiProperty({
+    enum: Models,
+    description: 'The model to use for the conversation',
+    example: Models.llama2,
+  })
   @IsEnum(Models)
   model: string;
 }
