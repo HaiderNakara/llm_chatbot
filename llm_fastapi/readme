@@ -1,0 +1,98 @@
+# LLM API Project
+
+This project implements a FastAPI-based API that allows users to interact with different large language models (LLMs) through a unified interface. Currently, it supports Mistral AI and Llama 2 models.
+
+## Features
+
+- Query different LLMs (Mistral and Llama 2) through a single API endpoint
+- Maintain conversation history
+- Easy model switching
+- Dockerized for easy deployment
+
+## Prerequisites
+
+- Python 3.9+
+- Docker (optional, for containerized deployment)
+
+## Installation
+
+1. Clone the repository:
+   ```
+   git clone <repository-url>
+   cd <repository-name>
+   ```
+
+2. Install the required dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+
+3. Set up environment variables:
+   Create a `.env` file in the project root and add your API keys:
+   ```
+   MISTRAL_API_KEY=your_mistral_api_key
+   GROQ_API_KEY=your_groq_api_key
+   ```
+
+## Usage
+
+### Running locally
+
+1. Start the FastAPI server:
+   ```
+   uvicorn main:app --host 0.0.0.0 --port 8000
+   ```
+
+2. The API will be available at `http://localhost:8000`
+
+### Using Docker
+
+1. Build the Docker image:
+   ```
+   docker build -t llm-api .
+   ```
+
+2. Run the container:
+   ```
+   docker run -p 8000:8000 -e MISTRAL_API_KEY=your_mistral_api_key -e GROQ_API_KEY=your_groq_api_key llm-api
+   ```
+
+## API Endpoints
+
+### POST /query
+
+Send a query to the selected LLM.
+
+Request body:
+```json
+{
+  "input_text": "Your question or prompt here",
+  "model": "llama2" or "mistral",
+  "history": [
+    {"role": "user", "content": "Previous message"},
+    {"role": "system", "content": "Previous response"}
+  ]
+}
+```
+
+Response:
+```json
+{
+  "answer": "Model's response",
+  "model": "llama2" or "mistral",
+  "history": [
+    {"role": "user", "content": "Previous message"},
+    {"role": "system", "content": "Previous response"},
+    {"role": "user", "content": "Your question or prompt"},
+    {"role": "system", "content": "Model's response"}
+  ]
+}
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).

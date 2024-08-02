@@ -1,0 +1,28 @@
+# Ignore macOS system files
+.DS_Store
+
+# Ignore Python virtual environment
+llm_fastapi/venv/
+llm_fastapi/__pycache__/
+llm_fastapi/*.pyc
+
+# Ignore environment variable files
+llm_fastapi/.env
+llm_nest/.env
+
+# Ignore node_modules in llm_nest
+llm_nest/node_modules/
+
+# Ignore build artifacts
+llm_nest/dist/
+
+# Ignore logs
+*.log
+
+# Ignore Docker files
+llm_fastapi/.dockerignore
+llm_nest/.dockerignore
+
+# Ignore IDE specific files
+.vscode/
+.idea/

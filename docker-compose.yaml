@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  nestjs_app:
+    build:
+      context: ./llm_nest
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./llm_nest/.env
+    networks:
+      - app_network
+
+  fastapi_app:
+    build:
+      context: ./llm_fastapi
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./llm_fastapi/.env
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
