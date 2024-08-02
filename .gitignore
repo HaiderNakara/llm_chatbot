@@ -9,6 +9,7 @@ llm_fastapi/*.pyc
 # Ignore environment variable files
 llm_fastapi/.env
 llm_nest/.env
+.env
 
 # Ignore node_modules in llm_nest
 llm_nest/node_modules/
