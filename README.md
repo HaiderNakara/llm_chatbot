@@ -29,18 +29,12 @@ This project consists of two microservices: a NestJS application and a FastAPI a
    ```
 
 2. Set up environment variables:
-   - In `llm_fastapi/.env`, add:
-     ```
-     FASTAPI_URL=http://fastapi_app:8000
-     GROQ_API_KEY=your_groq_api_key
-     MISTRAL_API_KEY=your_mistral_api_key
-     ```
-   - In `llm_nest/.env`, add:
-     ```
-     MONGO_DB=your_mongodb_connection_string
-     ```
-   
-   Make sure to replace `your_groq_api_key`, `your_mistral_api_key`, and `your_mongodb_connection_string` with your actual API keys and MongoDB connection string.
+   - In `.env` file:
+      - Set `MONGO_DB` to the MongoDB connection string.
+      - Set `GROQ_API_KEY` to the API key for GROQ service.
+      - Set `MISTRAL_API_KEY` to the API key for Mistral service.
+      - Note: You can use the `.env.example` files as a template.
+
 
 3. Build and start the containers:
    ```
